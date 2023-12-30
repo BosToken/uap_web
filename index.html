@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>Kode</td>
+        <td>Nama Barang</td>
+        <td>Harga</td>
+      </tr>
+      <tr>
+        <td>001</td>
+        <td>A</td>
+        <td>10.000</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>B</td>
+        <td>20.000</td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>C</td>
+        <td>30.000</td>
+      </tr>
+    </table>
+
+    <br /><br />
+    <h1>Masukan Inputan User</h1>
+
+    <label for="">Masukan Kode : </label>
+    <input id="code_barang" type="text" />
+
+    <br />
+    <label for="">Masukan Banyak Barang</label>
+    <input id="banyak_barang" type="number" />
+
+    <br />
+    <br />
+    <button onclick="onSubmit()">Submit</button>
+  </body>
+</html>
+
+<script>
+  onSubmit = () => {
+    let code_barang = document.getElementById("code_barang").value;
+    let banyak_barang = document.getElementById("banyak_barang").value;
+    // console.log(banyak_barang === "")
+    if (banyak_barang === "" || code_barang === "") {
+      // console.log("Kosong")
+      alert("Inputan Tidak Boleh Kosong");
+    } else {
+      onCalculate(code_barang, banyak_barang);
+    }
+  };
+
+  onCalculate = (code, value) => {
+    let hitung = 0;
+    if ("001" === code) {
+      hitung = 10000 * value;
+    }
+    if ("002" === code) {
+      hitung = 20000 * value;
+    }
+    if ("003" === code) {
+      hitung = 30000 * value;
+    }
+    onPayment(hitung);
+  };
+
+  onPayment = (calculate) => {
+    alert("Total yang harus dibayarkan adalah " + calculate);
+    let uang = prompt("Masukan Uang");
+    alert("Total kembalian anda " + (uang - calculate));
+  };
+</script>
